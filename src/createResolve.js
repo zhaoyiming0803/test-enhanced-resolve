@@ -7,7 +7,7 @@ const myResolver = ResolverFactory.createResolver({
 	fileSystem: new CachedInputFileSystem(fs, 4000),
   extensions: [".js", ".json"],
   plugins: [
-    new ResolvePlugin('before-resolve', 'resolved', 'web')
+    new ResolvePlugin('before-resolve', 'resolve', 'web')
   ]
 	/* any other resolver options here. Options/defaults can be seen below */
 });
@@ -16,12 +16,12 @@ const myResolver = ResolverFactory.createResolver({
 const context = {};
 const resolveContext = {};
 const lookupStartPath = __dirname;
-const request = "./interface/A.js";
-myResolver.resolve({}, lookupStartPath, request, resolveContext, (err, fileContext, filePath) => {
+const request = "./interface/D";
+myResolver.resolve({}, lookupStartPath, request, resolveContext, (err, path, result) => {
 	if (err) {
     console.log('createResolve err: ', err)
   } else {
-    console.log('createResolve fileContext: ', fileContext)
-    console.log('createResolve filePath: ', filePath)
+    console.log('createResolve path: ', path)
+    console.log('createResolve result: ', result)
   }
 });
