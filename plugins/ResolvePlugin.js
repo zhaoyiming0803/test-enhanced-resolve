@@ -5,6 +5,7 @@ class BeforeResolvePlugin {
     this.source = source
     this.target = target
     this.mode = mode
+    this.index = 0
   }
   
   apply (resolver) {
@@ -13,14 +14,14 @@ class BeforeResolvePlugin {
       // console.log('request: ', request)
       // console.log('resolveContext: ', resolveContext)
 
-      if (request.mode) {
+      if (request.index >= 3) {
         return callback()
       }
 
       const resource = request.request
       const resourceExt = path.extname(request.request)
       const obj = Object.assign({}, request, {
-        mode: this.mode,
+        index: this.index++,
         request: resource.slice(0, resource.length - resourceExt.length) + `.${this.mode}` + resourceExt
       })
       resolver.doResolve(target, obj, null, resolveContext, callback)
