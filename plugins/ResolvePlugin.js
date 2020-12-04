@@ -1,7 +1,7 @@
 const path = require('path')
 
 class BeforeResolvePlugin {
-  constructor (source, target, mode) {
+  constructor (source, mode, target) {
     this.source = source
     this.target = target
     this.mode = mode
@@ -24,7 +24,7 @@ class BeforeResolvePlugin {
         index: this.index++,
         request: resource.slice(0, resource.length - resourceExt.length) + `.${this.mode}` + resourceExt
       })
-      resolver.doResolve(target, obj, null, resolveContext, callback)
+      resolver.doResolve(target, obj, 'hello world', resolveContext, callback)
     })
   }
 }

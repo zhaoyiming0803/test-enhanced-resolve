@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "resolve": "node ./src/resolve.js",
-    "resolve-sync": "node ./src/resolve.sync.js",
-    "resolve-create": "node ./src/resolve.create.js",
-    "createResolve": "node ./src/createResolve.js"
+    "build": "node ./src/index.js",
+    "tapable": "node ./src/tapable.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +18,7 @@
   },
   "homepage": "https://github.com/zhaoyiming0803/test-enhanced-resolve#readme",
   "devDependencies": {
-    "enhanced-resolve": "^4.3.0"
+    "enhanced-resolve": "^4.3.0",
+    "neo-async": "^2.6.2"
   }
 }
